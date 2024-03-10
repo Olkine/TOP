@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "c6a688fb-2378-470f-b91f-1c4936b73d82",
+		"name": "test_swagger",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "33192195-c6a688fb-2378-470f-b91f-1c4936b73d82"
+	},
+	"item": [
+		{
+			"name": "https://petstore.swagger.io/v2/pet/100",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00ed5505-af76-4318-aef1-a822d05c2553",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Your test Pet not found\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Pet not found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "12d430c1-43b1-4357-bfb2-591999fc1b06",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/100",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
